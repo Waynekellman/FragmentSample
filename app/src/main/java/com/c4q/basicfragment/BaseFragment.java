@@ -12,6 +12,12 @@ import android.view.ViewGroup;
  */
 public class BaseFragment extends Fragment {
 
+    public void setListener(MyListener listener) {
+        this.listener = listener;
+    }
+
+    private MyListener listener;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -23,5 +29,13 @@ public class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //button.
+
+        if (listener != null) {
+            listener.doStuff("passed data");
+        }
     }
+
+
 }

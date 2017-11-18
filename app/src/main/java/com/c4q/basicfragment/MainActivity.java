@@ -5,8 +5,9 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements MyListener, View.OnClickListener {
 
     boolean isFragmentShown = false;
     FragmentManager manager;
@@ -25,8 +26,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             FragmentTransaction transaction = manager.beginTransaction();
 
             if (!isFragmentShown) {
-                //initialize a fragment on start-up
-                transaction.replace(R.id.fagment_container, new BaseFragment());
+
+                BaseFragment fragment = new BaseFragment();
+                fragment.setListener(this);
+
+                transaction.replace(R.id.fagment_container, fragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
                 isFragmentShown = true;
@@ -36,4 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+    @Override
+    public void doStuff(String stuff) {
+        Toast.makeText(this, stuff, Toast.LENGTH_LONG).show();
+    }
+
 }
