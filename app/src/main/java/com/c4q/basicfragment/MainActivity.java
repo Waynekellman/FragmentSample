@@ -5,19 +5,27 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MyListener, View.OnClickListener {
 
-    boolean isFragmentShown = false;
-    FragmentManager manager;
+    @BindView(R.id.button1)
+    Button toggleFragment;
+    private boolean isFragmentShown = false;
+    private FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.button1).setOnClickListener(this);
+        ButterKnife.bind(this);
+
         manager = getFragmentManager();
+        toggleFragment.setOnClickListener(this);
     }
 
     @Override

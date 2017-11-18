@@ -12,10 +12,6 @@ import android.view.ViewGroup;
  */
 public class BaseFragment extends Fragment {
 
-    public void setListener(MyListener listener) {
-        this.listener = listener;
-    }
-
     private MyListener listener;
 
     @Nullable
@@ -37,5 +33,8 @@ public class BaseFragment extends Fragment {
         }
     }
 
+    public void setListener(MyListener listener) {
+        this.listener = listener;
+    }
 
 }
