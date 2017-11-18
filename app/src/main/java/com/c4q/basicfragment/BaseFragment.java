@@ -1,5 +1,6 @@
 package com.c4q.basicfragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,4 +21,12 @@ public class BaseFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Activity activity = getActivity();
+        if (activity instanceof MainActivity){ // make sure you don't get a class cast exception
+            ((MainActivity) activity).frenchToast();
+        }
+    }
 }

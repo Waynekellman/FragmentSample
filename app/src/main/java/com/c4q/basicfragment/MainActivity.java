@@ -21,4 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void frenchToast(){
+        Toast.makeText(this, "toasty", Toast.LENGTH_LONG).show();
+    }
+
 }
